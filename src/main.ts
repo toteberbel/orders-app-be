@@ -12,11 +12,11 @@ async function bootstrap() {
     }),
   );
   app.enableCors({
-    origin: 'http://localhost:3000', // Allow requests from this origin
+    origin: process.env.ORIGIN, // Allow requests from this origin
     methods: 'GET,POST,PUT,DELETE', // Allow these HTTP methods
     allowedHeaders: 'Content-Type,Authorization', // Allow these headers
     credentials: true, // Allow credentials (e.g., cookies, authorization headers)
   });
-  await app.listen(3001);
+  await app.listen(process.env.APP_PORT || 3001);
 }
 bootstrap();
