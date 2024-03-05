@@ -12,7 +12,7 @@ async function bootstrap() {
     }),
   );
   app.enableCors({
-    origin: process.env.ORIGIN, // Allow requests from this origin
+    origin: process.env.ORIGIN.split(','), // Allow requests from this origin
     methods: 'GET,POST,PUT,DELETE', // Allow these HTTP methods
     allowedHeaders: 'Content-Type,Authorization', // Allow these headers
     credentials: true, // Allow credentials (e.g., cookies, authorization headers)
