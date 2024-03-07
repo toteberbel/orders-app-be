@@ -14,9 +14,9 @@ export class SeedService {
   ) {}
 
   async runSeed() {
+    await this.deleteOrders();
     await this.insertProducts();
     await this.insertDeliveries();
-    await this.deleteOrders();
   }
 
   async insertProducts() {
