@@ -1,22 +1,6 @@
 import { OrderItem } from 'src/order-items/entities/order-item.entity';
+import { ProductTypes } from 'src/seed/data/productTypes';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-
-export enum ProductTypes {
-  TIRA = 'tira',
-  AYUYA = 'ayuya',
-  ESPIGA = 'espiga',
-  CASERITO = 'caserito',
-  CUADRADA = 'cuadrada',
-  SALVADO = 'salvado',
-  AYUYITA = 'ayuyita',
-  ARABE = 'arabe',
-  CHORI = 'chori',
-  SURTIDO = 'surtido',
-  ROSETA = 'roseta',
-  LOMO = 'lomo',
-  HAMBURGUESA = 'hamburguesa',
-  BIZCOCHO = 'bizcocho',
-}
 
 @Entity()
 export class Product {
@@ -28,7 +12,4 @@ export class Product {
 
   @OneToMany(() => OrderItem, (orderItem) => orderItem.product)
   order_items: OrderItem[];
-
-  // @ManyToMany(() => Order, (order) => order.products)
-  // orders: Order[];
 }

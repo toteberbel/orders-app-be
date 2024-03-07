@@ -1,5 +1,5 @@
 import { IsEnum } from 'class-validator';
-import { ProductTypes } from 'src/products/entities/product.entity';
+import { ProductTypes } from 'src/seed/data/productTypes';
 
 export class CreateProductDto {
   @IsEnum(ProductTypes)

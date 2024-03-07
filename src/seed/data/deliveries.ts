@@ -1,4 +1,4 @@
 export enum Deliveries {
-  EMANUEL = 'emanuel',
-  ARIEL = 'ariel',
+  JHON = 'jhon',
+  STEVEN = 'steven',
 }

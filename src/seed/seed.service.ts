@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { DeliveryService } from 'src/delivery/delivery.service';
 import { OrderService } from 'src/order/order.service';
-import { ProductTypes } from 'src/products/entities/product.entity';
 import { ProductsService } from 'src/products/products.service';
 import { Deliveries } from 'src/seed/data/deliveries';
+import { ProductTypes } from 'src/seed/data/productTypes';
 
 @Injectable()
 export class SeedService {
