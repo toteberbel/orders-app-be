@@ -1,5 +1,5 @@
-import { Order } from 'src/order/entities/order.entity';
-import { Product } from 'src/products/entities/product.entity';
+import { Order } from '../../order/entities/order.entity';
+import { Product } from '../../products/entities/product.entity';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum MeasureUnit {

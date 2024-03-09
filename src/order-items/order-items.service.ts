@@ -1,8 +1,4 @@
-import {
-  BadRequestException,
-  Injectable,
-  InternalServerErrorException,
-} from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateOrderItemDto } from './dto/create-order-item.dto';
 import { UpdateOrderItemDto } from './dto/update-order-item.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -57,7 +53,7 @@ export class OrderItemsService {
     const orderItem = await this.orderItemRepository.findOne({
       where: { id },
     });
-    console.log(orderItem);
+
     if (!orderItem) throw new BadRequestException('order Item not found');
     return orderItem;
   }

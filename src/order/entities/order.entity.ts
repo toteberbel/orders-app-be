@@ -1,13 +1,9 @@
-import { UUID } from 'crypto';
-import { Delivery } from 'src/delivery/entities/delivery.entity';
-import { CreateOrderItemDto } from 'src/order-items/dto/create-order-item.dto';
-import { OrderItem } from 'src/order-items/entities/order-item.entity';
+import { Delivery } from '../../delivery/entities/delivery.entity';
+import { OrderItem } from '../../order-items/entities/order-item.entity';
 
 import {
   Column,
   Entity,
-  JoinTable,
-  ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,

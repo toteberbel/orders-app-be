@@ -29,7 +29,6 @@ export class OrderService {
     );
 
     const order = this.orderRepository.create(createOrderDto);
-    console.log(createOrderDto);
 
     order.delivery = delivery;
 
