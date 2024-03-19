@@ -11,6 +11,7 @@ import { Repository } from 'typeorm';
 import { UpdateOrderItemDto } from 'src/order-items/dto/update-order-item.dto';
 import { OrderItemsService } from 'src/order-items/order-items.service';
 import { DeliveryService } from 'src/delivery/delivery.service';
+import { User } from 'src/auth/entities/user.entity';
 
 @Injectable()
 export class OrderService {
@@ -22,13 +23,16 @@ export class OrderService {
     private readonly deliveryService: DeliveryService,
   ) {}
 
-  async create(createOrderDto: CreateOrderDto) {
+  async create(createOrderDto: CreateOrderDto, user: User) {
     // check if the delivery exsits
     const delivery = await this.deliveryService.findOne(
       createOrderDto.delivery_id,
     );
 
-    const order = this.orderRepository.create(createOrderDto);
+    const order = this.orderRepository.create({
+      ...createOrderDto,
+      user,
+    });
 
     order.delivery = delivery;
 
@@ -51,7 +55,7 @@ export class OrderService {
     return order;
   }
 
-  async update(id: string, updateOrderDto: UpdateOrderDto) {
+  async update(id: string, updateOrderDto: UpdateOrderDto, user: User) {
     const order = await this.findOne(id);
 
     if (updateOrderDto.delivery_id) {
@@ -63,7 +67,7 @@ export class OrderService {
     }
 
     this.orderRepository.merge(order, updateOrderDto);
-
+    order.user = user;
     const updatedOrder = await this.orderRepository.save(order);
 
     return updatedOrder;

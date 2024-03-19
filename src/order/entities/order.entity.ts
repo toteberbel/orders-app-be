@@ -1,3 +1,4 @@
+import { User } from 'src/auth/entities/user.entity';
 import { Delivery } from '../../delivery/entities/delivery.entity';
 import { OrderItem } from '../../order-items/entities/order-item.entity';
 
@@ -47,4 +48,7 @@ export class Order {
 
   @OneToMany(() => OrderItem, (orderItem) => orderItem.order, { cascade: true })
   order_items: OrderItem[];
+
+  @ManyToOne(() => User, (user) => user.order, { eager: true })
+  user: User;
 }

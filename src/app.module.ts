@@ -9,6 +9,7 @@ import { ProductsModule } from './products/products.module';
 import { SeedService } from './seed/seed.service';
 import { SeedModule } from './seed/seed.module';
 import { OrderItemsModule } from './order-items/order-items.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { OrderItemsModule } from './order-items/order-items.module';
     ProductsModule,
     SeedModule,
     OrderItemsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService, SeedService],

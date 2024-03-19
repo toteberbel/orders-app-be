@@ -13,14 +13,18 @@ import { OrderService } from './order.service';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { UpdateOrderItemDto } from 'src/order-items/dto/update-order-item.dto';
+import { Auth } from 'src/auth/decorators/auth.decorator';
+import { GetUser } from 'src/auth/decorators/get-user.decorator';
+import { User } from 'src/auth/entities/user.entity';
 
 @Controller('orders')
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
   @Post()
-  create(@Body() createOrderDto: CreateOrderDto) {
-    return this.orderService.create(createOrderDto);
+  @Auth()
+  create(@Body() createOrderDto: CreateOrderDto, @GetUser() user: User) {
+    return this.orderService.create(createOrderDto, user);
   }
 
   @Get()
@@ -37,8 +41,9 @@ export class OrderController {
   update(
     @Param('id', ParseUUIDPipe) id: string,
     @Body() updateOrderDto: UpdateOrderDto,
+    @GetUser() user: User,
   ) {
-    return this.orderService.update(id, updateOrderDto);
+    return this.orderService.update(id, updateOrderDto, user);
   }
 
   @Put(':id/items')
