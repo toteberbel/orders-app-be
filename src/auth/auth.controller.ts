@@ -4,9 +4,7 @@ import { CreateUserDto } from 'src/auth/dto/create-user.dto';
 import { LoginUserDto } from 'src/auth/dto/login-user.dto';
 import { GetUser } from 'src/auth/decorators/get-user.decorator';
 import { User } from 'src/auth/entities/user.entity';
-import { getRawHeaders } from 'src/auth/decorators/get-raw-headers.decorator';
 import { Auth } from 'src/auth/decorators/auth.decorator';
-import { ValidRoles } from 'src/auth/interfaces/valid-roles.enum';
 
 @Controller('auth')
 export class AuthController {
@@ -22,16 +20,16 @@ export class AuthController {
     return this.authService.login(loginUser);
   }
 
-  @Get('private')
-  @Auth(ValidRoles.user, ValidRoles.admin)
-  privateRoute(@GetUser() user: User, @getRawHeaders() rawHeaders: string[]) {
-    console.log(rawHeaders);
-    return {
-      message: 'todo ok',
-      user,
-      rawHeaders,
-    };
-  }
+  // @Get('private')
+  // @Auth(ValidRoles.user, ValidRoles.admin)
+  // privateRoute(@GetUser() user: User, @getRawHeaders() rawHeaders: string[]) {
+  //   console.log(rawHeaders);
+  //   return {
+  //     message: 'todo ok',
+  //     user,
+  //     rawHeaders,
+  //   };
+  // }
 
   @Get('check-status')
   @Auth()
