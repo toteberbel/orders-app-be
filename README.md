@@ -30,3 +30,6 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+
+## API Docs
+After starting the app, the documentation is available in `{app-host}/api`

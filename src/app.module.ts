@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { OrderModule } from './order/order.module';
 import { DeliveryModule } from './delivery/delivery.module';
 import { ConfigModule } from '@nestjs/config';
@@ -24,13 +22,11 @@ import { OrderItemsModule } from './order-items/order-items.module';
       password: process.env.DB_PASSWORD,
       autoLoadEntities: true,
       synchronize: true,
-      // logging: true,
     }),
     ProductsModule,
     SeedModule,
     OrderItemsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService, SeedService],
+  providers: [SeedService],
 })
 export class AppModule {}

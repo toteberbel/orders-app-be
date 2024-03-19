@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -17,6 +18,16 @@ async function bootstrap() {
     allowedHeaders: 'Content-Type,Authorization', // Allow these headers
     credentials: true, // Allow credentials (e.g., cookies, authorization headers)
   });
+
+  const config = new DocumentBuilder()
+    .setTitle('Orders API by Rodrigo')
+    .setDescription('The orders API description')
+    .setVersion('1.0')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+
+  SwaggerModule.setup('api', app, document);
+
   await app.listen(process.env.PORT || 3001, '0.0.0.0');
 }
 bootstrap();
