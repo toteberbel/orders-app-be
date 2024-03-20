@@ -5,7 +5,7 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum MeasureUnit {
   KILOGRAM = 'kg',
-  UNIT = 'unit',
+  UNIT = 'unidad',
   GRAMS = 'gr',
 }
 
