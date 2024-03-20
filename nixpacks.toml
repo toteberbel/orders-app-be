@@ -1,2 +1,2 @@
 [build.nixpacksPlan.phases.install]
-cmds = ["npm install"]
+cmds = ["npm run install"]
