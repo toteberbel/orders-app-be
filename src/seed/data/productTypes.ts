@@ -13,4 +13,5 @@ export enum ProductTypes {
   LOMO = 'lomo',
   HAMBURGUESA = 'hamburguesa',
   BIZCOCHO = 'bizcocho',
+  FELIPE = 'felipe',
 }

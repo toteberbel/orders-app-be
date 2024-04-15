@@ -5,7 +5,6 @@ import {
   IsNumber,
   IsOptional,
   IsString,
-  Min,
 } from 'class-validator';
 import { MeasureUnit } from 'src/order-items/entities/order-item.entity';
 
@@ -34,7 +33,6 @@ export class CreateOrderItemDto {
   })
   @IsNotEmpty()
   @IsNumber()
-  @Min(1)
   quantity: number;
 
   @ApiProperty({
